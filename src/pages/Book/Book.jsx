@@ -1,30 +1,34 @@
+import { Link } from "react-router";
+
 const Book = ({ singleBook }) => {
   //   const data = use(bookPromise);
   //   console.log(data);
 
-  const { bookName, author, image } = singleBook;
+  const { bookName, bookId, author, publisher, image, rating, tags } =
+    singleBook;
   return (
-    <section>
-      <div className="card bg-base-100 w-96 shadow-sm">
-        <figure>
-          <img src={image} alt="books" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">
-            Card Title
-            <div className="badge badge-secondary">NEW</div>
-          </h2>
-          <p>
-            A card component has a figure, a body part, and inside body there
-            are title and actions parts
-          </p>
-          <div className="card-actions justify-end">
-            <div className="badge badge-outline">Fashion</div>
-            <div className="badge badge-outline">Products</div>
+    <Link to={`/bookDetails/${bookId}`}>
+      <section>
+        <div className="card bg-base-100 w-96 shadow-sm">
+          <figure>
+            <img src={image} alt="books" />
+          </figure>
+          <div className="card-body">
+            <div className="flex justify-center gap-10">
+              {tags.map((tag) => (
+                <button>{tag}</button>
+              ))}
+            </div>
+            <h2 className="card-title">{bookName}</h2>
+            <p>Author:{author}</p>
+            <div className="card-actions justify-end">
+              <p>Book By:{publisher}</p>
+              <h1>{rating}</h1>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Link>
   );
 };
 
