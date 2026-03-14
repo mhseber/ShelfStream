@@ -1,4 +1,5 @@
 import { useLoaderData, useParams } from "react-router";
+import { addToStoredDB } from "../../uitility/addToStoreDB";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -19,6 +20,10 @@ const BookDetails = () => {
     publisher,
     yearOfPublishing,
   } = singleBook;
+
+  const handleMarkAsRead = (id) => {
+    addToStoredDB(id);
+  };
 
   return (
     <section>
@@ -44,7 +49,12 @@ const BookDetails = () => {
             <p>Year Of Publishing : {yearOfPublishing}</p>
             <p>Rating : {rating}</p>
             <div className="card-actions ">
-              <button className="btn btn-primary">Read</button>
+              <button
+                onClick={() => handleMarkAsRead(id)}
+                className="btn btn-primary"
+              >
+                Read
+              </button>
               <button className="btn btn-primary">Wishlist</button>
             </div>
           </div>
