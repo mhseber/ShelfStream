@@ -5,8 +5,8 @@ const Navbar = () => {
   const navLinks = (
     <>
       <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <li>Contacts</li>
+      <Link to="/readList">ReadList</Link>
+      <Link to="/pageToRead">Page to Read</Link>
     </>
   );
   return (
