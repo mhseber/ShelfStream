@@ -1,17 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { getStoredBook } from "../../uitility/addToStoreDB";
 
 const PageToRead = () => {
+  const [pageToRead, setPageToRead] = useState([]);
   const data = useLoaderData();
   console.log(data);
 
   useEffect(() => {
     const storedBookData = getStoredBook();
-    console.log(storedBookData);
-  });
+    const ConvertedStoredBooks = storedBookData.map((id) => parseInt(id));
+    const pageToRead = data.filter((book) =>
+      ConvertedStoredBooks.includes(book.bookId),
+    );
+    setPageToRead(pageToRead);
+  }, []);
   return (
     <div>
       <Tabs>
@@ -21,7 +26,7 @@ const PageToRead = () => {
         </TabList>
 
         <TabPanel>
-          <h2>Book i Read</h2>
+          <h2>Book i Read {pageToRead.length}</h2>
         </TabPanel>
         <TabPanel>
           <h2>My Wish List</h2>
