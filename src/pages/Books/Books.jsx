@@ -1,19 +1,7 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import Book from "../Book/Book";
 
 const Books = ({ data }) => {
-  const [allBooks, setAllBooks] = useState([]);
-
-  //   useEffect(() => {
-  //     fetch("books.json")
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setAllBooks(data);
-  //       });
-  //   }, []);
-
-  //   const bookPromise = fetch("./books.json").then((res) => res.json());
-
   return (
     <div>
       <h1 className="text-4xl text-center p-6">Books</h1>
